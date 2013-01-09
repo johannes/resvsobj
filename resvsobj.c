@@ -122,7 +122,9 @@ PHP_METHOD(resvsobj, getValue)
 }
 
 const zend_function_entry resvsobj_methods[] = {
+#ifndef NO_CTOR
 	PHP_ME(resvsobj, __construct,	NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+#endif
 	PHP_ME(resvsobj, add,	NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(resvsobj, getValue,	NULL, ZEND_ACC_PUBLIC)
 	PHP_FE_END
