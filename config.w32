@@ -1,0 +1,8 @@
+// vim:ft=javascript
+
+ARG_ENABLE("resvsobj", "enable resvsobj support", "no");
+
+if (PHP_RESVSOBJ != "no") {
+	EXTENSION("resvsobj", "resvsobj.c");
+}
+
