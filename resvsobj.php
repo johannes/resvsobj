@@ -3,6 +3,14 @@
 define('AMOUNT', $argv[1]);
 define('ITERATIONS', $argv[2]);
 
+// Allocate some memory and free it beforehand to be a bit fairer
+for ($i = 0; $i < AMOUNT*2; ++$i) {
+	$void[] = $i; 
+}
+unset($void);
+
+#################
+
 $resources = [];
 echo "Creating ".AMOUNT. " resources:\t";
 $start = microtime(true);
@@ -23,8 +31,7 @@ echo microtime(true)-$start, "\n";
 echo "Freeing all (unset of array):\t";
 $start = microtime(true);
 unset($resources);
-echo microtime(true)-$start, "\n";
-
+echo microtime(true)-$start, "\n\n";
 
 #######
 
@@ -44,7 +51,6 @@ for ($i = 0; $i < AMOUNT; ++$i) {
 	}
 }
 echo microtime(true)-$start, "\n";
-
 echo "Freeing all (unset of array):\t";
 $start = microtime(true);
 unset($objects);
